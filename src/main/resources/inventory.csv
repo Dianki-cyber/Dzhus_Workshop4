@@ -1,0 +1,23 @@
+Dream Motors|501 Luxury Ave|512-777-7777
+vin|year|make|model|vehicleType|color|odometer|price
+1|2024|Toyota|Supra GR|Coupe|White|2200|67000.00
+2|2023|Toyota|GR86|Coupe|Red|3100|36000.00
+3|2022|Toyota|Crown Platinum|Sedan|Black|4700|52000.00
+4|2024|Toyota|Century SUV|SUV|Silver|800|180000.00
+5|2023|Toyota|Land Cruiser 300|SUV|Gray|5500|93000.00
+6|2024|Toyota|GR Corolla Circuit Edition|Hatchback|Blue|2900|45000.00
+7|2020|Toyota|Camry TRD|Sedan|White|8700|39000.00
+8|2021|Toyota|Avalon Touring|Sedan|Burgundy|9100|41000.00
+9|2022|Toyota|RAV4 Prime XSE|SUV|Red|4900|48000.00
+10|2024|Toyota|Sequoia TRD Pro|SUV|Black|3100|78000.00
+11|2023|Lexus|LC500|Coupe|Blue|2500|104000.00
+12|2022|Lexus|LS500 F Sport|Sedan|Gray|4200|89000.00
+13|2024|Lexus|RX500h F Sport|SUV|White|1900|72000.00
+14|2023|Nissan|GT-R Nismo|Coupe|Silver|2300|215000.00
+15|2024|Porsche|911 Carrera GTS|Coupe|Black|1200|160000.00
+16|2023|Mercedes-Benz|G63 AMG|SUV|Matte Black|4200|205000.00
+17|2024|BMW|XM Label Red|SUV|Red|900|185000.00
+18|2024|Audi|RS7 Performance|Sedan|Gray|1500|150000.00
+19|2023|Ferrari|Roma|Coupe|Rosso Corsa|700|245000.00
+20|2024|Lamborghini|Huracán STO|Coupe|Lime Green|800|375000.00
+
