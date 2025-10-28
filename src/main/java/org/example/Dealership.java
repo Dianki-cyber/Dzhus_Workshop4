@@ -8,6 +8,7 @@ public class Dealership {
     private String address;
     private String phone;
     private ArrayList<Vehicle> inventory;
+
     // declare the list
     // Constructor
     public Dealership(String name, String address, String phone) {
@@ -51,7 +52,6 @@ public class Dealership {
     }
 
 
-
     // Add a vehicle
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
@@ -64,51 +64,84 @@ public class Dealership {
     }
 
     // Placeholder search methods
-    public Vehicle searchByVin(String vin) { return null; }
+    public Vehicle searchByVin(String vin) {
+        return null;
+    }
 
-    public ArrayList<Vehicle> searchByMakeModel(String make,String model) {
+    public ArrayList<Vehicle> searchByMakeModel(String make, String model) {
         ArrayList<Vehicle> result = new ArrayList<>();
-        for(Vehicle vehicle: inventory){
-            if(vehicle.getModel().equalsIgnoreCase(model) || vehicle.getMake().equalsIgnoreCase(make)){
-              result.add(vehicle);
-            }
-        }
-        return result; }
-
-    public ArrayList<Vehicle> searchByYear(int year){
-        ArrayList<Vehicle> result = new ArrayList<>();
-        for(Vehicle vehicle: inventory){
-            if(vehicle.getYear() == year){
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getModel().equalsIgnoreCase(model) || vehicle.getMake().equalsIgnoreCase(make)) {
                 result.add(vehicle);
             }
         }
         return result;
     }
-    public ArrayList<Vehicle> searchByColor(String color) {
+
+    // Search by mileage range (inclusive)
+    public ArrayList<Vehicle> searchByMileage(int minMileage, int maxMileage) {
         ArrayList<Vehicle> result = new ArrayList<>();
-        for(Vehicle vehicle: inventory){
-            if(vehicle.getColor().equalsIgnoreCase(color)){
+
+        // guard: if the user accidentally swaps min/max
+        if (minMileage > maxMileage) {
+            int tmp = minMileage;
+            minMileage = maxMileage;
+            maxMileage = tmp;
+        }
+
+        for (Vehicle vehicle : inventory) {
+            int odo = vehicle.getOdometer();
+            if (odo >= minMileage && odo <= maxMileage) {
                 result.add(vehicle);
             }
         }
-        return result; }
+        return result;
+    }
+
+    public ArrayList<Vehicle> searchByYear(int year) {
+        ArrayList<Vehicle> result = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getYear() == year) {
+                result.add(vehicle);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Vehicle> searchByColor(String color) {
+        ArrayList<Vehicle> result = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getColor().equalsIgnoreCase(color)) {
+                result.add(vehicle);
+            }
+        }
+        return result;
+    }
 
     public ArrayList<Vehicle> searchByPrice(double minPrice, double maxPrice) {
-       ArrayList<Vehicle> result = new ArrayList<>();
-       for(Vehicle vehicle : inventory){
-           if(vehicle.getPrice()>minPrice && vehicle.getPrice()<maxPrice){
-               result.add(vehicle);
-           }
-       }
-        return result ;
-    }
-    //public List<Vehicle>
-    // Placeholder remove method
-    public void removeVehicle(int vin) {
-        // for(Vehicle vehicle : inventory){
-        //if( vehicle.getVin()==vin){
-        inventory.removeIf(vehicle -> vehicle.getVin() == vin);
+        ArrayList<Vehicle> result = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getPrice() > minPrice && vehicle.getPrice() < maxPrice) {
+                result.add(vehicle);
+            }
+        }
+        return result;
+
+        public ArrayList<Vehicle> searchByVehicleType(String vehicleType) {
+            ArrayList<Vehicle> result = new ArrayList<>();
+            for (Vehicle vehicle : inventory) {
+                if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
+                    result.add(vehicle);
+                }
+            }
+            return result;
+        }
 
     }
-}
+        //public List<Vehicle>
+        // Placeholder remove method
+       // public void removeVehicle ( int vin){
+         //   inventory.removeIf(vehicle -> vehicle.getVin() == vin);
 
+        }
+    }

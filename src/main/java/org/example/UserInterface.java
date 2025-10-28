@@ -69,6 +69,10 @@ public class UserInterface {
                     searchByColor(scanner);
                     break;
                 case 6:
+                    searchByMileage(scanner);
+                    break;
+                case 7:
+                    searchByVehicleType(scanner);
                     break;
                 case 8:
                     addVehicle(scanner);
@@ -97,34 +101,49 @@ public class UserInterface {
         logVehicles(vehicles);
     }
 
-    private void searchForVehiclesByModelMake(Scanner scanner){
+    private void searchForVehiclesByModelMake(Scanner scanner) {
         System.out.println("Enter make or model");
         String makeOrModel = scanner.nextLine();
-        ArrayList<Vehicle> vehicles = dealership.searchByMakeModel(makeOrModel,makeOrModel);
+        ArrayList<Vehicle> vehicles = dealership.searchByMakeModel(makeOrModel, makeOrModel);
         logVehicles(vehicles);
     }
 
 
-    private  void searchByYear(Scanner scanner){
+    private void searchByYear(Scanner scanner) {
         System.out.println("Enter year:");
         int year = scanner.nextInt();
         scanner.nextLine();
         ArrayList<Vehicle> vehicles = dealership.searchByYear(year);
         logVehicles(vehicles);
     }
-    private  void searchByColor(Scanner scanner){
+
+    private void searchByColor(Scanner scanner) {
         System.out.println("Enter your color:");
         String color = scanner.nextLine();
         ArrayList<Vehicle> vehicles = dealership.searchByColor(color);
         logVehicles(vehicles);
 
     }
-    private void searchByMilage(Scanner scanner){
+
+    private void searchByMileage(Scanner scanner) {
         System.out.println("Enter milleage:");
+        int odometer = scanner.nextInt();
+        scanner.nextLine();
+        ArrayList<Vehicle> vehicles = dealership.searchByMileage(0, 200000);
+        logVehicles(vehicles);
+
 
     }
 
-    private void addVehicle(Scanner scanner){
+    private void searchByVehicleType(Scanner scanner) {
+        System.out.println("Enter your Vehicle type:");
+        String color = scanner.nextLine();
+        ArrayList<Vehicle> vehicles = dealership.searchByColor(color);
+        logVehicles(vehicles);
+    }
+
+
+    private void addVehicle(Scanner scanner) {
         System.out.println("Enter your vin:");
         int vin = scanner.nextInt();
         scanner.nextLine();
@@ -158,13 +177,16 @@ public class UserInterface {
         dealership.addVehicle(vehicle);
 
     }
-    private void removeVehicle(Scanner scanner){
+
+    private void removeVehicle(Scanner scanner) {
         System.out.println("Enter the vin:");
         int vin = scanner.nextInt();
         scanner.nextLine();
-       dealership.removeVehicle(vin);
+        dealership.removeVehicle(vin);
+
     }
-    private void logVehicles(ArrayList<Vehicle> vehicles){
+
+    private void logVehicles(ArrayList<Vehicle> vehicles) {
         for (Vehicle vehicle : vehicles) {
             String showVehicle = vehicle.toString();
             System.out.println(showVehicle);
