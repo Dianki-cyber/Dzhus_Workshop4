@@ -20,7 +20,6 @@ public class DealershipFileManager {
             reader.readLine();
             reader.readLine();
 
-
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 String[] vehicleData = line.split("\\|");
@@ -37,12 +36,13 @@ public class DealershipFileManager {
                 newVehicle.setPrice(Double.parseDouble(vehicleData[7]));
 
                 dealership.addVehicle(newVehicle);
-
             }
 
         } catch (FileNotFoundException ex) {
+            System.out.println("Again");
 
         } catch (IOException e) {
+            System.out.println("Again again");
         }
 
         return dealership;

@@ -63,10 +63,6 @@ public class Dealership {
         return inventory;
     }
 
-    // Placeholder search methods
-    public Vehicle searchByVin(String vin) {
-        return null;
-    }
 
     public ArrayList<Vehicle> searchByMakeModel(String make, String model) {
         ArrayList<Vehicle> result = new ArrayList<>();
@@ -138,7 +134,10 @@ public class Dealership {
             return result;
       }
 
-    //public List<Vehicle>
+   public void  purchaseVehicle(int vin){
+        removeVehicle(vin);
+   }
+
     //Placeholder remove method
     public void removeVehicle ( int vin){
         inventory.removeIf(vehicle -> vehicle.getVin() == vin);
