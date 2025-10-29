@@ -126,8 +126,9 @@ public class Dealership {
             }
         }
         return result;
+    }
 
-        public ArrayList<Vehicle> searchByVehicleType(String vehicleType) {
+        public ArrayList<Vehicle> searchByVehicleType (String vehicleType){
             ArrayList<Vehicle> result = new ArrayList<>();
             for (Vehicle vehicle : inventory) {
                 if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
@@ -135,13 +136,12 @@ public class Dealership {
                 }
             }
             return result;
-        }
+      }
 
-    }
-        //public List<Vehicle>
-        // Placeholder remove method
-       // public void removeVehicle ( int vin){
-         //   inventory.removeIf(vehicle -> vehicle.getVin() == vin);
+    //public List<Vehicle>
+    //Placeholder remove method
+    public void removeVehicle ( int vin){
+        inventory.removeIf(vehicle -> vehicle.getVin() == vin);
 
-        }
+}
     }

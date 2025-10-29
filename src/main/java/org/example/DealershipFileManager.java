@@ -10,7 +10,7 @@ import java.io.FileWriter;
 public class DealershipFileManager {
 
     public static Dealership getDealership() {
-        Dealership dealership = new Dealership("Richardson", "ABC", "222-111-333");
+        Dealership dealership = new Dealership("Dream Motors", "501 Luxury Ave", "512-777-7777");
         try {
             FileReader fr = new FileReader("src/main/resources/inventory.csv");
             BufferedReader reader = new BufferedReader(fr);

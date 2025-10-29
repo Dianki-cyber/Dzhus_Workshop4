@@ -24,7 +24,7 @@ public class UserInterface {
     }
 
     private void logMenu() {
-        System.out.printf("Welcome to %s,we sell the best car! \n", this.dealership);
+        System.out.printf("Welcome to %s,we sell the best car! ", this.dealership);
         System.out.printf("Located at %s%n", this.dealership.getAddress());
         System.out.println("Select from the following options:");
         System.out.println("0. Exit Program");
@@ -51,6 +51,7 @@ public class UserInterface {
             scanner.nextLine();//always put this
             switch (choice) {
                 case 0:
+                    System.out.println("Goodbye!");
                     running = false;
                     break;
                 case 1:
@@ -80,8 +81,11 @@ public class UserInterface {
                 case 9:
                     removeVehicle(scanner);
                     break;
-
+                default:
+                    System.out.println("Invalid option .please try again.");
+                    break;
             }
+
         }
         scanner.close();
     }
@@ -94,7 +98,7 @@ public class UserInterface {
     }
 
     private void searchForVehiclesByPrice(Scanner scanner) {
-        System.out.println("Enter min amd max price");
+        System.out.println("Enter min amd max price:");
         double min = scanner.nextDouble();
         double max = scanner.nextDouble();
         ArrayList<Vehicle> vehicles = dealership.searchByPrice(min, max);
@@ -102,7 +106,7 @@ public class UserInterface {
     }
 
     private void searchForVehiclesByModelMake(Scanner scanner) {
-        System.out.println("Enter make or model");
+        System.out.println("Enter make or model:");
         String makeOrModel = scanner.nextLine();
         ArrayList<Vehicle> vehicles = dealership.searchByMakeModel(makeOrModel, makeOrModel);
         logVehicles(vehicles);
@@ -126,7 +130,7 @@ public class UserInterface {
     }
 
     private void searchByMileage(Scanner scanner) {
-        System.out.println("Enter milleage:");
+        System.out.println("Enter mileage:");
         int odometer = scanner.nextInt();
         scanner.nextLine();
         ArrayList<Vehicle> vehicles = dealership.searchByMileage(0, 200000);
@@ -178,7 +182,7 @@ public class UserInterface {
 
     }
 
-    private void removeVehicle(Scanner scanner) {
+     private void removeVehicle(Scanner scanner) {
         System.out.println("Enter the vin:");
         int vin = scanner.nextInt();
         scanner.nextLine();
