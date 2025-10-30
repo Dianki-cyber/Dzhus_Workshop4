@@ -12,16 +12,8 @@ public class UserInterface {
     }
 
     private void init() {
-        DealershipFileManager fileManager = new DealershipFileManager();
-        this.dealership = fileManager.getDealership();
 
-        if (this.dealership == null) {
-            System.out.println("ERROR: The inventory data file is missing or formatted incorrectly.");
-            System.out.println("Please make sure 'inventory.csv' exists in your project folder.");
-            System.out.println("The program will now close.");
-            System.exit(1);
-
-        }
+        this.dealership = DealershipFileManager.getDealership();
     }
 
     private void logMenu() {
@@ -105,10 +97,8 @@ public class UserInterface {
     }
 
     private void showAllVehicles() {
-        //TODO
         ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
         logVehicles(vehicles);
-
     }
 
     private void searchForVehiclesByPrice(Scanner scanner) {
@@ -192,6 +182,7 @@ public class UserInterface {
         vehicle.setOdometer(odometer);
         vehicle.setPrice(price);
         dealership.addVehicle(vehicle);
+        DealershipFileManager.writeVehicle(vehicle);
 
     }
     private void purchaseVehicle(Scanner scanner){
@@ -199,7 +190,6 @@ public class UserInterface {
         int vin = scanner.nextInt();
         scanner.nextLine();
         dealership.purchaseVehicle(vin);
-
 
     }
 
