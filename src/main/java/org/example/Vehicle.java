@@ -20,6 +20,16 @@ public class Vehicle {
         this.odometer = 0;
         this.price = 0;
     }
+    public  Vehicle (int vin,int year, String make,String model,String vehicleType, String color, int odometer,double price){
+        this.vin = vin;
+        this.year = year;
+        this.make = make;
+        this.vehicleType = vehicleType;
+        this.model = model;
+        this.color = color;
+        this.odometer = odometer;
+        this.price = price;
+    }
 
     public int getVin() {
         return vin;

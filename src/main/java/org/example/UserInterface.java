@@ -1,6 +1,10 @@
 package org.example;
 
+import java.time.LocalDate;
+
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -83,10 +87,10 @@ public class UserInterface {
                         System.out.println("Invalid option , please try again.");
                         break;
                 }
-            } catch (InputMismatchException exception){
+            } catch (InputMismatchException exception) {
                 System.out.println("Invalid input");
                 scanner.nextLine();
-            } catch (Exception exception){
+            } catch (Exception exception) {
                 System.out.println("Invalid input try again");
                 scanner.nextLine();
 
@@ -147,6 +151,11 @@ public class UserInterface {
         String type = scanner.nextLine();
         ArrayList<Vehicle> vehicles = dealership.searchByVehicleType(type);
         logVehicles(vehicles);
+
+    }
+
+    private Vehicle searchByVin(int vin) {
+        return dealership.searchByVehicleVin(vin);
     }
 
 
@@ -185,15 +194,46 @@ public class UserInterface {
         DealershipFileManager.writeVehicle(vehicle);
 
     }
-    private void purchaseVehicle(Scanner scanner){
+
+    private void purchaseVehicle(Scanner scanner) {
         System.out.println("Enter vin:");
         int vin = scanner.nextInt();
         scanner.nextLine();
+        Vehicle vehicle = searchByVin(vin);
+        int yearOfVehicle = vehicle.getYear();
+        int yearOfToday =LocalDate.now().getYear();
+        String typeOfContract;
+        if((yearOfToday- yearOfVehicle)>3){
+            typeOfContract = "S";
+            System.out.println("Yoy are not allowed to lease this car because it is older than 3 years old!!!");
+        } else{
+            System.out.println("Would you like to buy  using sales or lease?");
+            System.out.println("For sales press S for lease press L");
+            typeOfContract = scanner.nextLine();
+        }
+        System.out.println("Please enter your first and last name:");
+        String customerName = scanner.nextLine();
+        System.out.println("Please enter your email:");
+        String customerEmail = scanner.nextLine();
+        System.out.println("Would you like to finance your car: true/false");
+        boolean isFinace = scanner.nextBoolean();
+
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = today.format(formatter);
+        ContractFileManager contractFileManager = new ContractFileManager();
+        if (typeOfContract.equalsIgnoreCase("S")) {
+            SalesContract salesContract = new SalesContract(formattedDate, customerName, customerEmail, searchByVin(vin), 0.05, 100, isFinace);
+            contractFileManager.saveContract(salesContract);
+        } else {
+            LeaseContract leaseContract = new LeaseContract(formattedDate, customerName, customerEmail, searchByVin(vin),0.5, 0.07);
+            contractFileManager.saveContract(leaseContract);
+        }
         dealership.purchaseVehicle(vin);
 
     }
 
-     private void removeVehicle(Scanner scanner) {
+    private void removeVehicle(Scanner scanner) {
         System.out.println("Enter the vin:");
         int vin = scanner.nextInt();
         scanner.nextLine();

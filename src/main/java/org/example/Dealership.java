@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Dealership {
     private String name;
@@ -132,7 +132,16 @@ public class Dealership {
                 }
             }
             return result;
-      }
+        }
+
+    public Vehicle searchByVehicleVin ( int vin){
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getVin()== vin) {
+              return vehicle;
+            }
+        }
+        return null;
+    }
 
    public void  purchaseVehicle(int vin){
         removeVehicle(vin);
