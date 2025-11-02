@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -93,9 +92,7 @@ public class UserInterface {
             } catch (Exception exception) {
                 System.out.println("Invalid input try again");
                 scanner.nextLine();
-
             }
-
         }
         scanner.close();
     }
@@ -225,9 +222,13 @@ public class UserInterface {
         if (typeOfContract.equalsIgnoreCase("S")) {
             SalesContract salesContract = new SalesContract(formattedDate, customerName, customerEmail, searchByVin(vin), 0.05, 100, isFinace);
             contractFileManager.saveContract(salesContract);
+            System.out.println("Your sales contract was sucssesful");
+            System.out.println(salesContract.toCsvLine());
         } else {
             LeaseContract leaseContract = new LeaseContract(formattedDate, customerName, customerEmail, searchByVin(vin),0.5, 0.07);
             contractFileManager.saveContract(leaseContract);
+            System.out.println("Is good");
+            System.out.println(leaseContract.toCsvLine());
         }
         dealership.purchaseVehicle(vin);
 

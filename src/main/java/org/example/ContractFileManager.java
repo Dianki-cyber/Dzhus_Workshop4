@@ -7,7 +7,7 @@ import java.io.FileWriter;
 
 public class ContractFileManager {
     
-    public Contract saveContract(Contract contract) {
+    public  void  saveContract(Contract contract) {
     try(
         FileWriter writer = new FileWriter("src/main/resources/contract", true))
         {
@@ -24,7 +24,7 @@ public class ContractFileManager {
         {
             System.out.println("Wrong!");
         }
-    return contract;
+
     }
 
 }
