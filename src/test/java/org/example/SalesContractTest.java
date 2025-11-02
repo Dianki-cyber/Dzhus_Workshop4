@@ -55,27 +55,5 @@ class SalesContractTest {
         //assert
         assertEquals(495,processingFee);
     }
-    @Test
-    void setProcessingFee() {
-    }
 
-    @Test
-    void isFinance() {
-    }
-
-    @Test
-    void setFinance() {
-    }
-
-    @Test
-    void getTotalPrice() {
-    }
-
-    @Test
-    void getMonthlyPayment() {
-    }
-
-    @Test
-    void toCsvLine() {
-    }
 }

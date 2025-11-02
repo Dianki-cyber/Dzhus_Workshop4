@@ -222,12 +222,12 @@ public class UserInterface {
         if (typeOfContract.equalsIgnoreCase("S")) {
             SalesContract salesContract = new SalesContract(formattedDate, customerName, customerEmail, searchByVin(vin), 0.05, 100, isFinace);
             contractFileManager.saveContract(salesContract);
-            System.out.println("Your sales contract was sucssesful");
+            System.out.println("Your sales contract was succesfull");
             System.out.println(salesContract.toCsvLine());
         } else {
             LeaseContract leaseContract = new LeaseContract(formattedDate, customerName, customerEmail, searchByVin(vin),0.5, 0.07);
             contractFileManager.saveContract(leaseContract);
-            System.out.println("Is good");
+            System.out.println("Your car approved for lease!");
             System.out.println(leaseContract.toCsvLine());
         }
         dealership.purchaseVehicle(vin);
